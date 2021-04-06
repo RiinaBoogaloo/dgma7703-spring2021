@@ -34,9 +34,13 @@ Where does it lead to guess there is only one way to find out...(transition-time
 
 &lt;audio src=&quot;dooropening.wav&quot; type=&quot;audio/mpeg&quot; controls autoplay muted width=&quot;150%&quot;&gt;
 </tw-passagedata><tw-passagedata pid="3" name="open the door" tags="" position="266,439" size="100,100">You eneter another room that looks identical to the room that you once encountered. The only difference is now there are (text-style:&quot;italic&quot;,&quot;underline&quot;,&quot;subscript&quot;)[two doors] in the room instead of one.
+
+(if:$marker is true)[I hope that marker will come in handy down the line!]
 &lt;video src=&quot;doorvine.mp4&quot; width=&quot;640&quot; height=&quot;480&quot; controls type&quot;video/mp4&quot;&gt;&lt;/video&gt;
 [[Go through the 1st door]]
-[[Go through the 2nd door]]</tw-passagedata><tw-passagedata pid="4" name="Who am I?" tags="" position="280,167" size="100,100">(set: $name to (prompt: &quot;What is my name?&quot;, &quot;&quot;, &quot;Sure&quot;,&quot;Unsure&quot;))
+[[Go through the 2nd door]]</tw-passagedata><tw-passagedata pid="4" name="Who am I?" tags="" position="205,171" size="100,100">(set: $name to (v6m-print: (prompt: &quot;What is your name?:&quot;,&quot;&quot;)))
+
+Maybeeeee $name is who your are but you are not certain. 
 
 You can&#39;t seem to (font:&quot;calibri&quot;)[recall] anything about yourself or how you got here. The sooner you get out of here the better.
 
@@ -45,7 +49,9 @@ The only thing that you can observe about yourself is that you are wearing a str
 [[Look around]] </tw-passagedata><tw-passagedata pid="5" name="Go through the 1st door" tags="" position="458,453" size="100,100">No doors in this room looks like a dead end.
 
 (text-style:&quot;blink&quot;)[[look around a little bit]]
-[[Go back-&gt;open the door]]</tw-passagedata><tw-passagedata pid="6" name="Go through the 2nd door" tags="" position="489,272" size="100,100">Another room but instead of 2 doors there are (text-style:&quot;bold&quot;,&quot;italic&quot;,&quot;wavy-underline&quot;,&quot;shudder&quot;)[3]. What also seems to be very peculiar is that each door is a different color.
+[[Go back-&gt;open the door]]</tw-passagedata><tw-passagedata pid="6" name="Go through the 2nd door" tags="" position="473,268" size="100,100">(enchant:&quot;door&quot;, (text-style:&#39;bold&#39;,&#39;italic&#39;)+(t8n:&quot;Shudder&quot;)+(t8n-time:6s))
+
+Another room but instead of 2 doors there are (text-style:&quot;bold&quot;,&quot;italic&quot;,&quot;wavy-underline&quot;,&quot;shudder&quot;)[3]. What also seems to be very peculiar is that each door is a different color.
 
 (text-style:&quot;bold&quot;,&quot;italic&quot;,&quot;sway&quot;)+(text-colour:red)[[Go through the red door]]
 (text-style:&quot;bold&quot;,&quot;italic&quot;,&quot;sway&quot;)+(text-colour:blue)[[Go through the blue door]]
@@ -70,21 +76,29 @@ The only thing that you can observe about yourself is that you are wearing a str
 
 (if:$oldman is true)+(text-style:&quot;italic&quot;,&quot;mirror&quot;)[[You see a mirror]]
 
-(confirm:&quot;Are you sure you want to go through the door?&quot;)[[The End-&gt;Start]]</tw-passagedata><tw-passagedata pid="13" name="Approach" tags="" position="795,121" size="100,100">You approach the man and see that he is very old. In addition, he looks (text-style:&quot;underline&quot;,&quot;blink&quot;)[dazed and confused] as if his mind were present somwhere else far beyond.
+(confirm:&quot;Are you sure you want to go through the door?&quot;)[[The End-&gt;Start]]</tw-passagedata><tw-passagedata pid="13" name="Approach" tags="" position="795,121" size="100,100">(change:&quot;mind&quot;, (text-colour: yellow) + (text-style:&#39;bold&#39;,&#39;outline&#39;)+ (t8n:&quot;Shudder&quot;)+(t8n-time:4s))
+
+You approach the man and see that he is very old. In addition, he looks (text-style:&quot;underline&quot;,&quot;blink&quot;)[dazed and confused] as if his mind were present somwhere else far beyond.
+
+He turns to face you and grumbles &quot;(nth: visit, &quot;Mhmmmmph&quot;, &quot;You again...&quot;, &quot;Oh, its me..I mean you..&quot;)&quot; then turns back around again.
 
 &lt;img src=&quot;Harold.jpg&quot; width=&quot;500&quot; height=&quot;300&quot; alt=&quot;pain&quot;&gt;
 
+
+
 [[Who are you?]]
 [[How do I get out?]]
-[[Leave]]</tw-passagedata><tw-passagedata pid="14" name="Leave" tags="" position="586,107" size="100,100">That was very (text-style:&quot;bold&quot;,&quot;blurrier&quot;,&quot;rumble&quot;)[strange]. Although, for some reason that old guy seemed (hover-style:(text-style:&#39;italic&#39;))[very famliar] to you and you can not quite tell why.
+[[Leave]]</tw-passagedata><tw-passagedata pid="14" name="Leave" tags="" position="614,94" size="100,100">That was very (text-style:&quot;bold&quot;,&quot;blurrier&quot;,&quot;rumble&quot;)[strange]. Although, for some reason that old guy seemed (hover-style:(text-style:&#39;italic&#39;))[very famliar] to you and you can not quite tell why.
 
 (set:$oldman to true)
 
-(transition-arrive:&quot;blur&quot;)[[Head Back-&gt;Go through the 2nd door]]</tw-passagedata><tw-passagedata pid="15" name="Who are you?" tags="" position="876,267" size="100,100">(text-colour:purple)[&quot;Hey who are you exactly and how long have you been here?&quot;]
+(transition-arrive:&quot;blur&quot;)[[Head Back-&gt;Go through the 2nd door]]
 
-The old man pauses and mumbles before he replies(text-colour:yellow)+(text-style:&quot;italic&quot;,&quot;sway&quot;)+(transition:&quot;flicker&quot;)[ &quot;Closer than you think....succeed where I failed....maybe I...you can get it...right...this time&quot;...]</tw-passagedata><tw-passagedata pid="16" name="How do I get out?" tags="" position="975,143" size="100,100">(text-colour:purple)[&quot;Hey do you know how to get out this place&quot;]
+[[Think more about the old man]]</tw-passagedata><tw-passagedata pid="15" name="Who are you?" tags="" position="876,267" size="100,100">(text-colour:purple)[&quot;Hey who are you exactly and how long have you been here?&quot;]
 
-The old man turns to you slowly and says (text-style:&quot;italic&quot;,&quot;sway&quot;)+(text-colour:yellow)+(text-rotate:5)+(t8n:&quot;slide-left&quot;)+(t8n-delay:2s)[&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....]
+The old man pauses and mumbles before he replies (text-colour:(either: red, yellow, green))+(text-style:&quot;italic&quot;,&quot;sway&quot;)+(transition:&quot;flicker&quot;)[ &quot;Closer than you think....succeed where I failed....maybe I...you can get it...right...this time&quot;...]</tw-passagedata><tw-passagedata pid="16" name="How do I get out?" tags="" position="975,143" size="100,100">(text-colour:purple)[&quot;Hey do you know how to get out this place&quot;]
+
+The old man turns to you slowly and says (text-style:&quot;italic&quot;,&quot;sway&quot;)+(text-colour:(either: red, yellow, green))+(text-rotate:5)+(t8n:&quot;slide-left&quot;)+(t8n-delay:2s)[&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....&quot;find the key&quot;....]
 (text-colour:purple)[&quot;Hmmmmmmmm&quot;]</tw-passagedata><tw-passagedata pid="17" name="You see a mirror" tags="" position="1201,9" size="100,100">As you are about to escape you see a large mirror on the right side of the room. You pause for a second to look into into it and see youself. After all you do not remember waht you even look like.
 
 (text-colour:purple)[&quot;That&#39;s wierd&quot;]
@@ -93,7 +107,14 @@ The old man turns to you slowly and says (text-style:&quot;italic&quot;,&quot;sw
 
 (text-colour:purple)[........]
 
-(text-style:&quot;bold&quot;,&quot;shudder&quot;)+(transition-depart:&quot;fade-right&quot;)[[The End-&gt;Start]]</tw-passagedata></tw-storydata>
+(text-style:&quot;bold&quot;,&quot;shudder&quot;)+(transition-depart:&quot;fade-right&quot;)[[The End-&gt;Start]]</tw-passagedata><tw-passagedata pid="18" name="Think more about the old man" tags="" position="476,90" size="100,100">You start to think more about what the old man said and your head starts to feel dizzy. As you try to regain our balance you start to feel old memories coming back to you.
+
+
+[[Wait it is all coming bak to me]]
+
+[[Probably is not that important-&gt;Go through the 2nd door]] </tw-passagedata><tw-passagedata pid="19" name="Wait it is all coming bak to me" tags="" position="339,104" size="100,100">Oh my god I remember everything... I&#39;m.....
+
+(live:2s)[(go-to:&quot;Start&quot;)]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
